@@ -102,6 +102,7 @@ void CPU::cut(std::string rhs) {
 }
 
 void CPU::get_assm() {
+    get_lbl();
     std::string str1;
     file.open("assm.txt");
      if(file.is_open()) {
@@ -115,6 +116,20 @@ void CPU::get_assm() {
     } else {
         std::cout << "is not open";
     }
+}
+void CPU::get_lbl() {
+    std::string lineer;
+    this->file.open("assm.txt");
+    if (this->file.is_open()) {
+        while (!(this->file.eof())) {
+            std::getline(this->file, lineer);
+            if (lineer.find(':') != -1) {
+                lineer.erase(lineer.begin() + lineer.find(':'));
+                this->lable[lineer] = this->file.tellg();
+            }
+        }
+    }
+    this->file.close();
 }
 
 void CPU::mov(std::string& dest, std::string& src) {
