@@ -46,6 +46,7 @@ public:
     bool jl(std::string& str, std::string& str1);
     bool jge(std::string& str, std::string& str1);
     bool jg(std::string& str, std::string& str1);
+    void get_lbl();
     void cut(std::string rhs);
     void make();
     void get_assm();
